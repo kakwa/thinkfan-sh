@@ -1,4 +1,5 @@
 #!/bin/sh
+#this script is released under the MIT Public License
 
 #fan speed for the different states
 STATE_1_LEVEL=1
