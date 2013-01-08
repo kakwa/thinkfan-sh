@@ -30,15 +30,20 @@ On some distros you may need to add ``thinkpad_acpi.fan_control=1`` to your kern
 
 ## Principle ##
 
-This script has three "temperature states": low (1), mid (2), high (2) and works like that:
+This script has three "temperature states": low (1), mid (2), high (2) and four thresholds
 
-Let say you start at low (1), and your computer heats up, the temperature will go over "LIMIT_1_UP", 
-the new state is set to mid (2), and it will remain at mid (2) unless the temperature goes under 
-"LIMIT_1_DOWN" (or becomes higher than "LIMIT_2_UP").
+It works like that:
+
+* Let say you start at low (1)
+* your computer heats up, the temperature will go over "LIMIT_1_UP"
+* the new state is set to mid (2)
+* it will remain at mid (2) for a while (unless it goes over "LIMIT_2_UP")
+* the temperature goes under "LIMIT_1_DOWN" (which is lower than "LIMIT_1_UP")
+* the state comes back to low (1)
 
 "LIMIT_1_UP" is greater than "LIMIT_1_DOWN" in order to prevent the fan to switch every second from low to mid.
 
-The same principal is used to switch between mid (2) and high (3).
+The same principal is used to switch between mid (2) and high (3) with "LIMIT_2_UP" and "LIMIT_2_DOWN"
 
 ## Tuning the script ##
 
