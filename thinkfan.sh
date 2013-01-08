@@ -19,9 +19,16 @@ LIMIT_2_DOWN=65
 #We start at max just to be safe 
 STATE=3
 
+
 #a dirty function to get the temperature
 get_max_temperature(){
-  MAX_TEMP=`cat /proc/acpi/ibm/thermal |sed "s/temperatures:\|-128//g"|sed "s/\([0-9]\)\ /\1\n/g"|sort -r|head -n 1`
+    MAX_TEMP=0
+    for i in `cat /proc/acpi/ibm/thermal|sed "s/temperatures://"`
+    do
+    if [ $i -gt $MAX_TEMP ]; then
+        MAX_TEMP=$i
+    fi
+    done
 }
 
 #the function regulating the fan
