@@ -26,6 +26,7 @@ As root:
 
     curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/bin/thinkfan.sh
     vim /usr/local/bin/thinkfan.sh #edit the value to your taste
+    chmod 700 /usr/local/bin/thinkfan.sh
     /usr/local/bin/thinkfan.sh
 
 One way to use it is to simply put it inside ``/usr/local/bin/`` and to add ``/usr/local/bin/thinkfan.sh &`` 
