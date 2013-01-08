@@ -16,11 +16,19 @@ for thinkpad computers under linux using ``/proc/acpi/ibm/fan``.
 
 This script plays arround your fan speed, so it could be a dangerous for your computer. Use it carefully.
 
-A nice visible temperature widget might be a good idea.
+A nice visible temperature widget might be a good idea. 
+
+Some tuning to.
 
 ## Using the script ##
 
 Just run it!
+
+As root:
+
+  curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/thinkfan.sh
+  vim /usr/local/thinkfan.sh #edit the value to your taste
+  /usr/local/thinkfan.sh
 
 One way to use it is to simply put it inside ``/usr/local/bin/`` and to add ``/usr/local/bin/thinkfan.sh &`` 
 inside ``/etc/rc.local``
