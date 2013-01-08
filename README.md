@@ -22,13 +22,11 @@ Some tuning to.
 
 ## Using the script ##
 
-Just run it!
-
 As root:
 
-  curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/thinkfan.sh
-  vim /usr/local/thinkfan.sh #edit the value to your taste
-  /usr/local/thinkfan.sh
+    curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/bin/thinkfan.sh
+    vim /usr/local/bin/thinkfan.sh #edit the value to your taste
+    /usr/local/bin/thinkfan.sh
 
 One way to use it is to simply put it inside ``/usr/local/bin/`` and to add ``/usr/local/bin/thinkfan.sh &`` 
 inside ``/etc/rc.local``
