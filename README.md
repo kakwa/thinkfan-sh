@@ -34,7 +34,7 @@ This script has three "temperature states": low (1), mid (2), high (2) and works
 
 Let say you start at low (1), and your computer heats up, the temperature will go over "LIMIT_1_UP", 
 the new state is set to mid (2), and it will remain at mid (2) unless the tempurature goes under 
-"LIMIT_1_DOWN" (or becomes higher than "LIMIT_1_UP").
+"LIMIT_1_DOWN" (or becomes higher than "LIMIT_2_UP").
 
 "LIMIT_1_UP" is greater than "LIMIT_1_DOWN" in order to prevent the fan to switch every second from low to mid.
 
