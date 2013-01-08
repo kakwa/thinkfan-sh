@@ -15,8 +15,6 @@ LIMIT_2_UP=75
 #Limit temperature when we switch from 2 to 1 while going down
 LIMIT_2_DOWN=65
 
-CURRENT_LIMIT_UP=$LIMIT_1_UP
-CURRENT_LIMIT_DOWN=$LIMIT_0_UP
 STATE=1
 
 get_max_temperature(){
