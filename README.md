@@ -18,7 +18,7 @@ This script plays arround your fan speed, so it could be a dangerous for your co
 
 A nice visible temperature widget might be a good idea. 
 
-Some tuning to.
+Some tuning might also be good.
 
 ## Using the script ##
 
