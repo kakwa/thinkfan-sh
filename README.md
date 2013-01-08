@@ -72,7 +72,7 @@ The temperature thresholds in Celsius degree:
 * LIMIT_2_UP
 * LIMIT_2_DOWN 
 
-Note that LIMIT_<int>_DOWN must lower than LIMIT_1_UP
+Note that LIMIT_N_DOWN must lower than LIMIT_N_UP
 
 The different fan speeds:
 * STATE_1_LEVEL
