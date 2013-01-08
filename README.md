@@ -85,6 +85,6 @@ Note that there could be less than 8 speeds ( 4 and 5 could mean the same speed)
 
 The default value are those used on my thinkpad T60 (the hotter one), I can set STATE_1_LEVEL to 0 on my thinkpad x60
 
-For example my thinkpad x60 can handle a ``level 0`` in idle.
 
+------------------------
 Hope it could help a little to make your thinkpad quieter.
