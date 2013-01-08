@@ -9,8 +9,8 @@ thinkfan-sh is released under the MIT Public License
 
 ## Description ##
 
-``thinkfan.sh`` is just a very simple script that handle temperature 
-for thinkpad computers under GNU/Linux using ``/proc/acpi/ibm/fan`` and ``/proc/acpi/ibm/thermal``.
+``thinkfan.sh`` is just a very simple script that handle fan speed 
+on thinkpad computers under GNU/Linux using ``/proc/acpi/ibm/fan`` and ``/proc/acpi/ibm/thermal``.
 
 ## Disclaimer ##
 
