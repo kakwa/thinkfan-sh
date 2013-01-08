@@ -81,7 +81,7 @@ The different fan speeds:
 
 The value is an integer between 0 (fan disabled) and 7 (fan at max speed). 
 
-Note that there could be less than 8 speeds ( 4 and 5 could mean the same speed).
+Note that there could be less than 8 speeds ( 4 and 5 could mean the same speed for example).
 
 The default values are those used on my thinkpad T60 (the hotter one), I can set STATE_1_LEVEL to 0 on my thinkpad x60
 
