@@ -14,7 +14,7 @@ for thinkpad computers under linux using ``/proc/acpi/ibm/fan``.
 
 ## Disclaimer ##
 
-This script plays arround your fan speed, so it could be a dangerous for your computer. Use it with care 
+This script plays arround your fan speed, so it could be a dangerous for your computer. Use it carefully.
 
 A nice visible temperature widget might be a good idea.
 
@@ -30,7 +30,16 @@ On some distros you may need to add ``thinkpad_acpi.fan_control=1`` to your kern
 
 ## Principle ##
 
-This script has three "temperature states": low (1), mid (2), high (2) and four thresholds
+This script has three "fan states": 
+* low (1): lowest fan speed
+* mid (2): mid fan speed
+* high (3): highest fan speed 
+
+It also four "temperature thresholds":
+* LIMIT_1_UP: temperature where it switches from 1 to 2 while going up
+* LIMIT_1_DOWN: temperature where it switches from 2 to 1 while going down
+* LIMIT_2_UP: temperature where it switches from 2 to 3 while going up
+* LIMIT_2_DOWN: temperature where it switches from 3 to 2 while going down
 
 It works like that:
 
@@ -47,12 +56,27 @@ The same principal is used to switch between mid (2) and high (3) with "LIMIT_2_
 
 ## Tuning the script ##
 
-There are several things you can tun inside this script:
+There are several things you can tun inside this script.
 
-You can tun the value of LIMIT_1_UP, LIMIT_1_DOWN, LIMIT_2_UP and LIMIT_2_DOWN 
-(it's the temperature thresholds in Celsius degree).
+The temperature thresholds in Celsius degree:
 
-You can also tun the value sent to ``/proc/acpi/ibm/fan``.
+* LIMIT_1_UP
+* LIMIT_1_DOWN
+* LIMIT_2_UP
+* LIMIT_2_DOWN 
+
+Note that LIMIT_<int>_DOWN must lower than LIMIT_1_UP
+
+The different fan speeds:
+* STATE_1_LEVEL
+* STATE_2_LEVEL
+* STATE_3_LEVEL
+
+The value is an integer between 0 (fan disabled) and 7 (fan at max speed). 
+
+Note that there could be less than 8 speeds ( 4 and 5 could mean the same speed).
+
+The default value are those used on my thinkpad T60 (the hotter one), I can set STATE_1_LEVEL to 0 on my thinkpad x60
 
 For example my thinkpad x60 can handle a ``level 0`` in idle.
 
