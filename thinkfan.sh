@@ -15,12 +15,15 @@ LIMIT_2_UP=75
 #Limit temperature when we switch from 2 to 1 while going down
 LIMIT_2_DOWN=65
 
-STATE=1
+#We start at max just to be safe 
+STATE=3
 
+#a dirty function to get the temperature
 get_max_temperature(){
   MAX_TEMP=`cat /proc/acpi/ibm/thermal |sed "s/temperatures:\|-128//g"|sed "s/\([0-9]\)\ /\1\n/g"|sort -r|head -n 1`
 }
 
+#the function regulating the fan
 regula_fan(){
 if [ $MAX_TEMP -gt $LIMIT_1_UP ] && [ $STATE -eq 1 ]
 	then STATE=2
@@ -35,10 +38,11 @@ case $STATE in
 	1) echo level $STATE_1_LEVEL >/proc/acpi/ibm/fan;;
 	2) echo level $STATE_2_LEVEL >/proc/acpi/ibm/fan;;
 	3) echo level $STATE_3_LEVEL >/proc/acpi/ibm/fan;;	
-	:) echo level 7 >/proc/acpi/ibm/fan;;
+	:) echo level 7 >/proc/acpi/ibm/fan;; #just to be safe
 esac	
 }
 
+#infinite loop
 while [ 1 ]
 do
 	get_max_temperature
