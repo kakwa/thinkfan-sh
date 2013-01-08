@@ -14,7 +14,7 @@ for thinkpad computers under linux using ``/proc/acpi/ibm/fan``.
 
 ## Disclaimer ##
 
-This script plays arround your fan speed, so it could be a dangerous for your computer. Use it carefully.
+This script plays around your fan speed, so it could be a dangerous for your computer. Use it carefully.
 
 A nice visible temperature widget might be a good idea. 
 
