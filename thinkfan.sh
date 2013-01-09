@@ -22,31 +22,40 @@ STATE=3
 
 #a dirty function to get the temperature
 get_max_temperature(){
-    MAX_TEMP=0
+    NEW_MAX_TEMP=0
     for i in `cat /proc/acpi/ibm/thermal|sed "s/temperatures://"`
     do
-    if [ $i -gt $MAX_TEMP ]; then
-        MAX_TEMP=$i
+    if [ $i -gt $NEW_MAX_TEMP ]; then
+        NEW_MAX_TEMP=$i
     fi
     done
+    
+    #We update only if we realy have a new value
+    if [ $NEW_MAX_TEMP -gt 0 ]
+    then
+         MAX_TEMP=$NEW_MAX_TEMP
+    fi
 }
 
 #the function regulating the fan
 regula_fan(){
-if [ $MAX_TEMP -gt $LIMIT_1_UP ] && [ $STATE -eq 1 ]
-	then STATE=2
-elif [ $MAX_TEMP -lt $LIMIT_1_DOWN ]
-	then STATE=1
-elif [ $MAX_TEMP -gt $LIMIT_2_UP ]
-	then STATE=3
-elif [ $MAX_TEMP -lt $LIMIT_2_DOWN ] && [ $STATE -eq 3 ]
-	then STATE=2
-fi
-case $STATE in
-	1) echo level $STATE_1_LEVEL >/proc/acpi/ibm/fan;;
-	2) echo level $STATE_2_LEVEL >/proc/acpi/ibm/fan;;
-	3) echo level $STATE_3_LEVEL >/proc/acpi/ibm/fan;;	
-	:) echo level 7 >/proc/acpi/ibm/fan;; #just to be safe
+    #Getting the state
+    if [ $MAX_TEMP -gt $LIMIT_1_UP ] && [ $STATE -eq 1 ]
+        then STATE=2
+    elif [ $MAX_TEMP -lt $LIMIT_1_DOWN ]
+        then STATE=1
+    elif [ $MAX_TEMP -gt $LIMIT_2_UP ]
+        then STATE=3
+    elif [ $MAX_TEMP -lt $LIMIT_2_DOWN ] && [ $STATE -eq 3 ]
+        then STATE=2
+    fi
+    
+    #Setting the fan speed
+    case $STATE in
+        1) echo level $STATE_1_LEVEL >/proc/acpi/ibm/fan;;
+        2) echo level $STATE_2_LEVEL >/proc/acpi/ibm/fan;;
+        3) echo level $STATE_3_LEVEL >/proc/acpi/ibm/fan;;	
+        :) echo level 7 >/proc/acpi/ibm/fan;; #just to be safe
 esac	
 }
 
