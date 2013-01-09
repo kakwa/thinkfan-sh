@@ -13,7 +13,7 @@ LIMIT_1_DOWN=60
 
 #Limit temperature when we switch from 2 to 3 while going up
 LIMIT_2_UP=75
-#Limit temperature when we switch from 2 to 1 while going down
+#Limit temperature when we switch from 3 to 2 while going down
 LIMIT_2_DOWN=65
 
 #We start at max just to be safe 
