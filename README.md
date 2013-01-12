@@ -25,7 +25,7 @@ Some tuning might also be good.
 As root:
 ```shell
 curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/bin/thinkfan.sh
-vim /usr/local/bin/thinkfan.sh #edit the value to your taste
+vim /usr/local/bin/thinkfan.sh #edit some parameters to your taste
 chmod 700 /usr/local/bin/thinkfan.sh
 /usr/local/bin/thinkfan.sh
 ```
