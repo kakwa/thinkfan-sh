@@ -30,7 +30,8 @@ chmod 700 /usr/local/bin/thinkfan.sh
 /usr/local/bin/thinkfan.sh
 ```
 One way to use it is to simply put it inside ``/usr/local/bin/`` and to add ``/usr/local/bin/thinkfan.sh &`` 
-inside ``/etc/rc.local``
+inside ``/etc/rc.local`` (Debian & RedHat/Centos), on Gentoo 
+``ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start`` should do the trick.
 
 On some distros you may need to add ``thinkpad_acpi.fan_control=1`` to your kernel comand line 
 (hint, look at ``/boot/grub/grub.cfg``)
