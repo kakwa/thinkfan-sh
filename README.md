@@ -22,6 +22,8 @@ Some tuning might also be good.
 
 ## Using the script ##
 
+### Installation and configuration ###
+
 As root:
 ```shell
 curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/bin/thinkfan.sh
@@ -29,9 +31,11 @@ vim /usr/local/bin/thinkfan.sh #edit some parameters to your taste
 chmod 700 /usr/local/bin/thinkfan.sh
 /usr/local/bin/thinkfan.sh
 ```
-One way to use it is to simply put it inside ``/usr/local/bin/`` and to add ``/usr/local/bin/thinkfan.sh &`` 
-inside ``/etc/rc.local`` (Debian & RedHat/Centos), on Gentoo 
-``ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start`` should do the trick.
+### Making it start on boot ###
+
+* On (Debian & RedHat/Centos): add ``/usr/local/bin/thinkfan.sh &`` 
+inside ``/etc/rc.local`` (Debian & RedHat/Centos) 
+* on Gentoo: ``ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start`` should do the trick.
 
 On some distros you may need to add ``thinkpad_acpi.fan_control=1`` to your kernel comand line 
 (hint, look at ``/boot/grub/grub.cfg``)
@@ -39,15 +43,15 @@ On some distros you may need to add ``thinkpad_acpi.fan_control=1`` to your kern
 ## Principle ##
 
 This script has three "fan states": 
-* low (1): lowest fan speed
-* mid (2): mid fan speed
-* high (3): highest fan speed 
+* ``low (1)``: lowest fan speed
+* ``mid (2)``: mid fan speed
+* ``high (3)``: highest fan speed 
 
 It also four "temperature thresholds":
-* LIMIT_1_UP: temperature where it switches from 1 to 2 while going up
-* LIMIT_1_DOWN: temperature where it switches from 2 to 1 while going down
-* LIMIT_2_UP: temperature where it switches from 2 to 3 while going up
-* LIMIT_2_DOWN: temperature where it switches from 3 to 2 while going down
+* ``LIMIT_1_UP``: temperature where it switches from 1 to 2 while going up
+* ``LIMIT_1_DOWN``: temperature where it switches from 2 to 1 while going down
+* ``LIMIT_2_UP``: temperature where it switches from 2 to 3 while going up
+* ``LIMIT_2_DOWN``: temperature where it switches from 3 to 2 while going down
 
 It works like that:
 
@@ -68,17 +72,17 @@ There are several things you can tun inside this script.
 
 The temperature thresholds in Celsius degree:
 
-* LIMIT_1_UP
-* LIMIT_1_DOWN
-* LIMIT_2_UP
-* LIMIT_2_DOWN 
+* ``LIMIT_1_UP``
+* ``LIMIT_1_DOWN``
+* ``LIMIT_2_UP``
+* ``LIMIT_2_DOWN`` 
 
 Note that LIMIT_N_DOWN must lower than LIMIT_N_UP
 
 The different fan speeds:
-* STATE_1_LEVEL
-* STATE_2_LEVEL
-* STATE_3_LEVEL
+* ``STATE_1_LEVEL``
+* ``STATE_2_LEVEL``
+* ``STATE_3_LEVEL``
 
 The value is an integer between 0 (fan disabled) and 7 (fan at max speed). 
 
@@ -88,4 +92,4 @@ The default values are those used on my thinkpad T60 (the hotter one), I can set
 
 
 ------------------------
-Hope it could help a little to make your thinkpad quieter.
+Hope it helps to make your thinkpad a little quieter.
