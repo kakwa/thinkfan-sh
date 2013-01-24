@@ -39,7 +39,7 @@ On some distros you may need to add ``thinkpad_acpi.fan_control=1`` to your kern
 
 * On (Debian & RedHat/Centos): add ``/usr/local/bin/thinkfan.sh &`` 
 inside ``/etc/rc.local`` (Debian & RedHat/Centos).
-* on Gentoo: ``ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start`` should do the trick.
+* On Gentoo: ``ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start`` should do the trick.
 
 ## Principle ##
 
@@ -49,7 +49,7 @@ This script has three "fan states":
 * ``mid (2)``: mid fan speed
 * ``high (3)``: highest fan speed 
 
-It also four "temperature thresholds":
+It also has four "temperature thresholds":
 
 * ``LIMIT_1_UP``: temperature where it switches from 1 to 2 while going up
 * ``LIMIT_1_DOWN``: temperature where it switches from 2 to 1 while going down
@@ -93,7 +93,6 @@ Note that there could be less than 8 speeds ( 4 and 5 could mean the same speed 
 
 The default values are those used on my thinkpad T60 (the hotter one), I can set ``STATE_1_LEVEL`` 
 to 0 on my thinkpad x60.
-
 
 ------------------------
 Hope it helps to make your thinkpad a little quieter.
