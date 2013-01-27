@@ -1,43 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Thinkfan-sh by kakwa</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Thinkfan-sh : simple fan control script for thinkpad" />
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Thinkfan-sh</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/kakwa/thinkfan-sh">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/kakwa/thinkfan-sh/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/kakwa/thinkfan-sh/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/kakwa/thinkfan-sh">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>Thinkfan-sh</h1>
-          <p>simple fan control script for thinkpad</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/kakwa">kakwa</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">Thinkfan-sh</h1>
+          <h2 id="project_tagline">simple fan control script for thinkpad</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/kakwa/thinkfan-sh/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kakwa/thinkfan-sh/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>thinkfan-sh</h1>
 
 <p>simple fan control script for thinkpad</p>
@@ -48,7 +41,7 @@
 
 <h2>Description</h2>
 
-<p><code>thinkfan.sh</code> is just a very simple script that handle fan speed 
+<p><code>thinkfan.sh</code> is just a very simple shell script that handles fan speed 
 on thinkpad computers under GNU/Linux using <code>/proc/acpi/ibm/fan</code> and <code>/proc/acpi/ibm/thermal</code>.</p>
 
 <h2>Disclaimer</h2>
@@ -61,6 +54,8 @@ on thinkpad computers under GNU/Linux using <code>/proc/acpi/ibm/fan</code> and 
 
 <h2>Using the script</h2>
 
+<h3>Installation and configuration</h3>
+
 <p>As root:</p>
 
 <div class="highlight"><pre>curl https://raw.github.com/kakwa/thinkfan-sh/master/thinkfan.sh -o /usr/local/bin/thinkfan.sh
@@ -69,40 +64,50 @@ chmod 700 /usr/local/bin/thinkfan.sh
 /usr/local/bin/thinkfan.sh
 </pre></div>
 
-<p>One way to use it is to simply put it inside <code>/usr/local/bin/</code> and to add <code>/usr/local/bin/thinkfan.sh &amp;</code> 
-inside <code>/etc/rc.local</code> (Debian &amp; RedHat/Centos), on Gentoo 
-<code>ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start</code> should do the trick.</p>
-
 <p>On some distros you may need to add <code>thinkpad_acpi.fan_control=1</code> to your kernel comand line 
-(hint, look at <code>/boot/grub/grub.cfg</code>)</p>
+(hint, look at <code>/boot/grub/grub.cfg</code>).</p>
 
-<h2>Principle</h2>
+<h3>Making it start on boot</h3>
+
+<ul>
+<li>On (Debian &amp; RedHat/Centos): add <code>/usr/local/bin/thinkfan.sh &amp;</code> 
+inside <code>/etc/rc.local</code> (Debian &amp; RedHat/Centos).</li>
+<li>On Gentoo: <code>ln -s /usr/local/bin/thinkfan.sh /etc/local.d/thinkfan.start</code> should do the trick.</li>
+</ul><h2>Principle</h2>
 
 <p>This script has three "fan states": </p>
 
 <ul>
-<li>low (1): lowest fan speed</li>
-<li>mid (2): mid fan speed</li>
-<li>high (3): highest fan speed </li>
-</ul><p>It also four "temperature thresholds":</p>
+<li>
+<code>low (1)</code>: lowest fan speed</li>
+<li>
+<code>mid (2)</code>: mid fan speed</li>
+<li>
+<code>high (3)</code>: highest fan speed </li>
+</ul><p>It also has four "temperature thresholds":</p>
 
 <ul>
-<li>LIMIT_1_UP: temperature where it switches from 1 to 2 while going up</li>
-<li>LIMIT_1_DOWN: temperature where it switches from 2 to 1 while going down</li>
-<li>LIMIT_2_UP: temperature where it switches from 2 to 3 while going up</li>
-<li>LIMIT_2_DOWN: temperature where it switches from 3 to 2 while going down</li>
+<li>
+<code>LIMIT_1_UP</code>: temperature where it switches from 1 to 2 while going up</li>
+<li>
+<code>LIMIT_1_DOWN</code>: temperature where it switches from 2 to 1 while going down</li>
+<li>
+<code>LIMIT_2_UP</code>: temperature where it switches from 2 to 3 while going up</li>
+<li>
+<code>LIMIT_2_DOWN</code>: temperature where it switches from 3 to 2 while going down</li>
 </ul><p>It works like that:</p>
 
 <ul>
 <li>Let say you start at low (1)</li>
-<li>your computer heats up, the temperature will go over "LIMIT_1_UP"</li>
+<li>your computer heats up, the temperature will go over <code>LIMIT_1_UP</code>
+</li>
 <li>the new state is set to mid (2)</li>
-<li>it will remain at mid (2) for a while (unless it goes over "LIMIT_2_UP")</li>
-<li>the temperature goes under "LIMIT_1_DOWN" (which is lower than "LIMIT_1_UP")</li>
+<li>it will remain at mid (2) for a while (unless it goes over <code>LIMIT_2_UP</code>)</li>
+<li>the temperature goes under "LIMIT_1_DOWN" (which is lower than <code>LIMIT_1_UP</code>)</li>
 <li>the state comes back to low (1)</li>
-</ul><p>"LIMIT_1_UP" is greater than "LIMIT_1_DOWN" in order to prevent the fan to switch every second from low to mid.</p>
+</ul><p><code>LIMIT_1_UP</code> is greater than <code>LIMIT_1_DOWN</code> in order to prevent the fan to switch every second from low to mid.</p>
 
-<p>The same principal is used to switch between mid (2) and high (3) with "LIMIT_2_UP" and "LIMIT_2_DOWN"</p>
+<p>The same principal is used to switch between mid (2) and high (3) with <code>LIMIT_2_UP</code> and <code>LIMIT_2_DOWN</code>.</p>
 
 <h2>Tuning the script</h2>
 
@@ -111,29 +116,39 @@ inside <code>/etc/rc.local</code> (Debian &amp; RedHat/Centos), on Gentoo
 <p>The temperature thresholds in Celsius degree:</p>
 
 <ul>
-<li>LIMIT_1_UP</li>
-<li>LIMIT_1_DOWN</li>
-<li>LIMIT_2_UP</li>
-<li>LIMIT_2_DOWN </li>
-</ul><p>Note that LIMIT_N_DOWN must lower than LIMIT_N_UP</p>
+<li><code>LIMIT_1_UP</code></li>
+<li><code>LIMIT_1_DOWN</code></li>
+<li><code>LIMIT_2_UP</code></li>
+<li>
+<code>LIMIT_2_DOWN</code> </li>
+</ul><p>Note that <code>LIMIT_N_DOWN</code> must lower than <code>LIMIT_N_UP</code>.</p>
 
 <p>The different fan speeds:</p>
 
 <ul>
-<li>STATE_1_LEVEL</li>
-<li>STATE_2_LEVEL</li>
-<li>STATE_3_LEVEL</li>
+<li><code>STATE_1_LEVEL</code></li>
+<li><code>STATE_2_LEVEL</code></li>
+<li><code>STATE_3_LEVEL</code></li>
 </ul><p>The value is an integer between 0 (fan disabled) and 7 (fan at max speed). </p>
 
 <p>Note that there could be less than 8 speeds ( 4 and 5 could mean the same speed for example).</p>
 
-<p>The default values are those used on my thinkpad T60 (the hotter one), I can set STATE_1_LEVEL to 0 on my thinkpad x60</p>
+<p>The default values are those used on my thinkpad T60 (the hotter one), I can set <code>STATE_1_LEVEL</code> 
+to 0 on my thinkpad x60.</p>
 
-<hr><p>Hope it could help a little to make your thinkpad quieter.</p>
+<hr><p>Hope it helps to make your thinkpad a little quieter.</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Thinkfan-sh maintained by <a href="https://github.com/kakwa">kakwa</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
