@@ -56,7 +56,7 @@ regula_fan(){
         2) echo level $STATE_2_LEVEL >/proc/acpi/ibm/fan;;
         3) echo level $STATE_3_LEVEL >/proc/acpi/ibm/fan;;	
         :) echo level 7 >/proc/acpi/ibm/fan;; #just to be safe
-esac	
+    esac	
 }
 
 #infinite loop
