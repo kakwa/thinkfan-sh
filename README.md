@@ -96,3 +96,7 @@ to 0 on my thinkpad x60.
 
 ------------------------
 Hope it helps to make your thinkpad a little quieter.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kakwa/thinkfan-sh/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
